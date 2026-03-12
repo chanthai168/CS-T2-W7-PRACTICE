@@ -8,17 +8,19 @@ function App() {
   const [Error, setError] = useState(false);
   /* You will need some function to handle the key pressed and button events */
   function handleCompute(){
+    const isValid = (val) => /^-?(\d+(\.\d*)?|\.\d+)$/.test(val.trim());
     const parse1 = parseFloat(Num1);
     const parse2 = parseFloat(Num2);
 
-    if (isNaN(parse1) || isNaN(parse2)){
-      setResult("A and B shall be numbers!");
-      setError(true);
-    } else {
-      setResult(parse1 + parse2);
-      setError(false);
+  if (!isValid(Num1) || !isValid(Num2)){
+        setResult("A and B shall be numbers!");
+        setError(true);
+      } else {
+        setResult(parse1 + parse2);
+        setError(false);
+      }
     }
-  }
+    
 
   function onA(event){
     setNum1(event.target.value);
